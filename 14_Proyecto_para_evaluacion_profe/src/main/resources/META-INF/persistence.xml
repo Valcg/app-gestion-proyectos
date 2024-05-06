@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="my_app" transaction-type="RESOURCE_LOCAL">
+		<class>modelo.entidades.Cliente</class>
+		<class>modelo.entidades.Departamento</class>
+		<class>modelo.entidades.Empleado</class>
+		<class>modelo.entidades.Factura</class>
+		<class>modelo.entidades.Familia</class>
+		<class>modelo.entidades.Perfil</class>
+		<class>modelo.entidades.Producto</class>
+		<class>modelo.entidades.ProyectoConEmpleado</class>
+		<class>modelo.entidades.ProyectoConProducto</class>
+		<class>modelo.entidades.Proyecto</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clientes_proyectos_empleados_IFP_2024?serverTimezone=UTC"/>
+			<property name="javax.persistence.jdbc.user" value="uproyectos_IFP_2024"/>
+			<property name="javax.persistence.jdbc.password" value="uproyectos"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<property name="hibernate.format_sql" value="false"/>
+		</properties>
+	</persistence-unit>
+</persistence>
