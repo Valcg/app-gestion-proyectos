@@ -23,4 +23,22 @@ public  abstract  class abstractDaoImplMy8Jpa {
 	}
 	
 	
+	/*EntityManagerFactory emf: Es una interfaz que recolecta los metadatos
+	 *  de la unidad de persistencia, es decir, la configuración de la base de datos 
+	 *  y las entidades de Java que se van a mapear.
+	 
+
+	EntityManager em: Es una interfaz que representa la conexión con la base de datos
+	 y contiene métodos para realizar operaciones de CRUD (Create, Read, Update, Delete) en 
+	 las entidades.
+
+	EntityTransaction tx: Es una interfaz que se utiliza para manejar las transacciones 
+	en la base de datos. Permite iniciar, confirmar o descartar una transacción.
+
+	Query query: Es una interfaz que se utiliza para ejecutar consultas en la base de 
+	datos utilizando JPQL (Java Persistence Query Language), un lenguaje de consulta para
+	 entidades en JPA.
+
+	String jpql: Es una cadena de texto que contiene las sentencias de consulta en JPQL, 
+	que se utilizan para interactuar con las entidades y sus atributos en la base de datos. */
 }

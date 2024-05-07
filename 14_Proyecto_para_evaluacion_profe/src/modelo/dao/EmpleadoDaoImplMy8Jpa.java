@@ -103,20 +103,26 @@ implements EmpleadoDao{
 		jpql=" select sum(e.salario) from Empleado e ";
 		query = em.createQuery(jpql);
 		
-		BigDecimal totalSalario = 
-		
-		if (totalSalario != null)
-			 return totalSalario;
-		else 
-			 return null;
-	}
+		 BigDecimal totalSalario= (BigDecimal) query.getSingleResult();
+		    
+		    if (totalSalario != null)
+		        return totalSalario;
+		    else 
+		        return null;
+		    }
 
 	@Override
-	public double salarioTotal(int idDepar) {
+	public BigDecimal salarioTotal(int idDepar) {
 		jpql=" select sum(e.salario) from Empleado e where e.idDepar = idDepar";
 		query = em.createQuery(jpql);
 		
-		return 0;
-	}
+		 BigDecimal totalSalario= (BigDecimal) query.getSingleResult();
+		    
+		    if (totalSalario != null)
+		        return totalSalario;
+		    else 
+		        return null;
+		    }
+
 
 }

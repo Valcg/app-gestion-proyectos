@@ -26,6 +26,7 @@ public class Perfil implements Serializable {
 	private BigDecimal tasaStandard;
 
 	public Perfil() {
+		super();
 	}
 
 	public int getIdPerfil() {
@@ -49,6 +50,38 @@ public class Perfil implements Serializable {
 	}
 
 	public void setTasaStandard(BigDecimal tasaStandard) {
+		this.tasaStandard = tasaStandard;
+	}
+
+	@Override
+	public String toString() {
+		return "Perfil [idPerfil=" + idPerfil + ", nombre=" + nombre + ", tasaStandard=" + tasaStandard + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idPerfil;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Perfil))
+			return false;
+		Perfil other = (Perfil) obj;
+		if (idPerfil != other.idPerfil)
+			return false;
+		return true;
+	}
+
+	public Perfil(int idPerfil, String nombre, BigDecimal tasaStandard) {
+		super();
+		this.idPerfil = idPerfil;
+		this.nombre = nombre;
 		this.tasaStandard = tasaStandard;
 	}
 

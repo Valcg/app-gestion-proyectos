@@ -212,40 +212,36 @@ public class Empleado implements Serializable {
 	
 	}
 	
-	public String  literalSexo(String sexo) {
+public String literalSexo() {
 		
 		
-		 String literal = null;
-			
-			
-			switch (sexo) {
-			case "H": 
-			case "h": 
-				literal = "hombre" ;
-				break;
-				
-			case "m":
-			case "M":
-				literal = "mujer";
-				break;
-				
-			
-			default: 
-				
-				literal = "genero incorrecto";
-			
-			
-				}
-					return literal;
 		
-	}
+		switch (genero) {
+		case "H": 
+			
+			genero = "Hombre";
+			break;
+			
+		case "M": 
+			
+			genero = "Mujer";
+			break;
+			
+		default: 
+			
+			genero = "genero incorrecto";
+		
+	
+		}
+		return genero;
+}
 	
 	public String nombreCompleto() {
 		return apellidos + " , " + nombre;
 	}
 	
 	
-	public String obtenerEmail(String nombre) {
+	public String obtenerEmail() {
 		
 		
 		String[] Ape = apellidos.split(" ");
