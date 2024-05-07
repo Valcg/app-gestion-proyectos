@@ -19,6 +19,7 @@ public  abstract  class abstractDaoImplMy8Jpa {
 		emf = Persistence.createEntityManagerFactory("my_app");
 		em= emf.createEntityManager();
 		tx = em.getTransaction();
+		
 	}
 	
 	
