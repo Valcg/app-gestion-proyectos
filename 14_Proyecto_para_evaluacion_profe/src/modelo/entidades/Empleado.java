@@ -57,7 +57,10 @@ public class Empleado implements Serializable {
 	private List<Proyecto> proyectos;
 
 	public Empleado() {
+		
+		super();
 	}
+	
 
 	public int getIdEmpl() {
 		return this.idEmpl;
@@ -169,4 +172,91 @@ public class Empleado implements Serializable {
 		return proyecto;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Empleado [idEmpl=" + idEmpl + ", apellidos=" + apellidos + ", email=" + email + ", fechaIngreso="
+				+ fechaIngreso + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", nombre=" + nombre
+				+ ", password=" + password + ", salario=" + salario + ", departamento=" + departamento + ", perfil="
+				+ perfil + ", proyectos=" + proyectos + "]";
+	}
+
+
+	public Empleado(int idEmpl, String apellidos, String email, Date fechaIngreso, Date fechaNacimiento, String genero,
+			String nombre, String password, BigDecimal salario, Departamento departamento, Perfil perfil,
+			List<Proyecto> proyectos) {
+		super();
+		this.idEmpl = idEmpl;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaNacimiento = fechaNacimiento;
+		this.genero = genero;
+		this.nombre = nombre;
+		this.password = password;
+		this.salario = salario;
+		this.departamento = departamento;
+		this.perfil = perfil;
+		this.proyectos = proyectos;
+	}
+
+	
+	public BigDecimal salarioBruto() {
+		return salario;
+		
+	}
+	
+	public double salarioMensual(int meses) {
+		// que es esto 
+		return  salarioBruto().doubleValue() / meses ;
+	
+	}
+	
+	public String  literalSexo(String sexo) {
+		
+		
+		 String literal = null;
+			
+			
+			switch (sexo) {
+			case "H": 
+			case "h": 
+				literal = "hombre" ;
+				break;
+				
+			case "m":
+			case "M":
+				literal = "mujer";
+				break;
+				
+			
+			default: 
+				
+				literal = "genero incorrecto";
+			
+			
+				}
+					return literal;
+		
+	}
+	
+	public String nombreCompleto() {
+		return apellidos + " , " + nombre;
+	}
+	
+	
+	public String obtenerEmail(String nombre) {
+		
+		
+		String[] Ape = apellidos.split(" ");
+		
+		return  nombre.substring(0,1) + Ape[0].toLowerCase() + "@tt.com" ;
+		
+	}
+	
+	
+	
+	
+
+	
 }

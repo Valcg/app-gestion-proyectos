@@ -23,6 +23,7 @@ public class Departamento implements Serializable {
 	private String nombre;
 
 	public Departamento() {
+		super();
 	}
 
 	public int getIdDepar() {
@@ -49,4 +50,42 @@ public class Departamento implements Serializable {
 		this.nombre = nombre;
 	}
 
+	@Override
+	public String toString() {
+		return "Departamento [idDepar=" + idDepar + ", direccion=" + direccion + ", nombre=" + nombre + "]";
+	}
+
+	public Departamento(int idDepar, String direccion, String nombre) {
+		super();
+		this.idDepar = idDepar;
+		this.direccion = direccion;
+		this.nombre = nombre;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idDepar;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Departamento))
+			return false;
+		Departamento other = (Departamento) obj;
+		if (idDepar != other.idDepar)
+			return false;
+		return true;
+	}
+
+
+	
+
+	
+	
+	
 }
