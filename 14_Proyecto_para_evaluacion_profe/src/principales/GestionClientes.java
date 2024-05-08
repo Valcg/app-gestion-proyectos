@@ -131,9 +131,12 @@ public class GestionClientes {
 		 System.out.println("opcion del 1 al 5");
 		 
 		 opcion = leer.nextInt();
+		 System.out.println();
 		  while (opcion <1 || opcion > 5) {
 			  System.out.println("solo opciones del 1 al 5");
 			  opcion=leer.nextInt();
+			  // pa qu e no coja el carcater de contrl de carro que no hacogido el nextINT
+			  System.out.println();
 		  }
 		  
 		  return opcion;

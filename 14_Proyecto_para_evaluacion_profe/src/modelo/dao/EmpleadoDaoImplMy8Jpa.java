@@ -1,4 +1,5 @@
 package modelo.dao;
+
 import java.math.BigDecimal;
 import java.util.List;
 import modelo.entidades.Empleado;
@@ -64,10 +65,10 @@ implements EmpleadoDao{
 	@Override
 	public List<Empleado> empleadosByDepartamento(int idDepar) {
 
-		jpql="select e from Empleado e where e.idDepar = dep";
+		jpql="select e from Empleado e where e.idDepar = :idDepar";
 		query = em.createQuery(jpql);
 		
-		query.setParameter("dep" , idDepar);
+		query.setParameter("idDepar" , idDepar);
 		return query.getResultList();
 		
 	}
@@ -99,30 +100,25 @@ implements EmpleadoDao{
 	}
 
 	@Override
-	public BigDecimal salarioTotal() {
-		jpql=" select sum(e.salario) from Empleado e ";
+	public double salarioTotal() {
+		jpql="select sum(e.salario) from Empleado e";
 		query = em.createQuery(jpql);
 		
-		 BigDecimal totalSalario= (BigDecimal) query.getSingleResult();
+		return ((BigDecimal)query.getSingleResult()).doubleValue();
 		    
-		    if (totalSalario != null)
-		        return totalSalario;
-		    else 
-		        return null;
+		 
 		    }
 
 	@Override
-	public BigDecimal salarioTotal(int idDepar) {
-		jpql=" select sum(e.salario) from Empleado e where e.idDepar = idDepar";
+	public double salarioTotal(int idDepar) {
+		jpql=" select sum(e.salario) from Empleado e where e.idDepar = ?1";
+		//select sum(e.salario) from empleados e  where e.id_depar = 10;
 		query = em.createQuery(jpql);
+		query.setParameter("?1", idDepar);
 		
-		 BigDecimal totalSalario= (BigDecimal) query.getSingleResult();
-		    
-		    if (totalSalario != null)
-		        return totalSalario;
-		    else 
-		        return null;
-		    }
-
-
+		
+		return ((BigDecimal)query.getSingleResult()).doubleValue();
+	    
+	   
+			}
 }

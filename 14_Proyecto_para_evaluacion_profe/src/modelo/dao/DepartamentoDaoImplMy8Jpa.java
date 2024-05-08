@@ -21,8 +21,18 @@ implements DepartamentoDao {
 		
 	}
 
+
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public Departamento eliminar(String clave) {
+	public List<Departamento> buscarTodos() {
+		jpql = "select d from Departamento d";
+		query = em.createQuery(jpql);
+		return query.getResultList();
+	}
+
+	@Override
+	public Departamento eliminar(Integer clave) {
 		try {
 			Departamento dep  = buscarUno(clave);
 			if(dep  != null) {
@@ -39,21 +49,11 @@ implements DepartamentoDao {
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
 
 	@Override
-	public Departamento buscarUno(String clave) {
+	public Departamento buscarUno(Integer clave) {
 		return em.find(Departamento.class, clave);
-		
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Departamento> buscarTodos() {
-		jpql = "select d from Departamento d";
-		query = em.createQuery(jpql);
-		return query.getResultList();
 	}
 
 }

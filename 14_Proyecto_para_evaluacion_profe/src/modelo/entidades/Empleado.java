@@ -201,14 +201,14 @@ public class Empleado implements Serializable {
 	}
 
 	
-	public BigDecimal salarioBruto() {
-		return salario;
+	public double salarioBruto() {
+		return salario.doubleValue();
 		
 	}
 	
 	public double salarioMensual(int meses) {
-		// que es esto 
-		return  salarioBruto().doubleValue() / meses ;
+		
+		return  salarioBruto() / meses ;
 	
 	}
 	

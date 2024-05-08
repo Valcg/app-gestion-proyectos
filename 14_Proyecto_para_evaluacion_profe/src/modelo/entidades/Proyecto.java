@@ -212,9 +212,7 @@ public class Proyecto implements Serializable {
 	
 	public int diferenciaFinPrevistoReal() {
 		
-		Date A = fechaInicio / fechaFinPrevisto;
 		
-		return A/fechaFinReal;
 		}
 	/*
 	 • diferenciaFinPrevistoReal(): int . Días entre fin previsto y fin real*/

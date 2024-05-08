@@ -22,9 +22,9 @@ public class testClienteDaoJpa {
 	
 	
 	public static void main(String[] args) {
-		//todos();
+		todos();
 		//uno();
-		alta();
+		//alta();
 		//eliminar();
 }
 	

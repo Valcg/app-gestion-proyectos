@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface InterfacegenericoCrud<K, T> {
 	boolean alta(T obj);
-	T eliminar(String clave);
+	T eliminar(K clave);
 	T buscarUno(K clave);
 	List<T>buscarTodos();
 
