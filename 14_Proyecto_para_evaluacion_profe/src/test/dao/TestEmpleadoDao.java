@@ -30,13 +30,13 @@ private static DepartamentoDao ddao ;
 	public static void main(String[] args) {
 		//todos();
 		//uno();
-		alta();
 		//eliminar();
 		//empleadosByDepartamento();
 		//empleadosBySexo();
 		//empleadosByApellido();
 		//salarioTotal();
-		//salarioTotalINT();
+		salarioTotalINT();
+		//alta();
 }
 	
 	public static void alta() {
@@ -47,14 +47,16 @@ private static DepartamentoDao ddao ;
 		empl.setGenero("M");
 		empl.setFechaIngreso(null);
 		empl.setFechaNacimiento(null);
-		empl.setPassword("root");
+		empl.setEmail("petra@fp.com");
+		empl.setPassword("petra");
 		empl.setSalario(BigDecimal.valueOf(3000));
 		empl.setPerfil(pdao.buscarUno(4));
 		empl.setDepartamento(ddao.buscarUno(10));
+		empl.setProyectos(null);
 			
 		 
 		System.out.println(edao.alta(empl));
-		todos();
+		//todos();
 		
 		
 	}
@@ -67,11 +69,11 @@ private static DepartamentoDao ddao ;
 		empl.setGenero("M");
 		empl.setPassword("root");
 		empl.setSalario(BigDecimal.valueOf(3000));
-		
-		/*empl.setPerfil();
-		empl.setDepartamento();*/
+		empl.setPerfil(pdao.buscarUno(4));
+		empl.setDepartamento(ddao.buscarUno(10));
+		empl.setProyectos(null);
 		 
-		System.out.println(" eliminando : " + edao.eliminar("120"));
+		System.out.println(" eliminando : " + edao.eliminar(120));
 		
 		
 	}
@@ -79,7 +81,7 @@ private static DepartamentoDao ddao ;
 	public static void uno() {
 		
 		System.out.println("BUSCAR UNO");
-		System.out.println(edao.buscarUno("115"));
+		System.out.println(edao.buscarUno(115));
 		
 	}
 
@@ -102,8 +104,7 @@ private static DepartamentoDao ddao ;
 	
 	public static void empleadosBySexo() {
 		
-		
-		System.out.println(edao.empleadosBySexo('m'));
+		System.out.println(edao.empleadosBySexo("M"));
 		
 	}
 	

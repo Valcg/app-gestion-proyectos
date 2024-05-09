@@ -178,8 +178,9 @@ public class Empleado implements Serializable {
 		return "Empleado [idEmpl=" + idEmpl + ", apellidos=" + apellidos + ", email=" + email + ", fechaIngreso="
 				+ fechaIngreso + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + ", nombre=" + nombre
 				+ ", password=" + password + ", salario=" + salario + ", departamento=" + departamento + ", perfil="
-				+ perfil + ", proyectos=" + proyectos + "]";
+				+ perfil +  "]";
 	}
+	//borramos del to string lalista de proyectos para que no se bucle , por referencia  cruzada
 
 
 	public Empleado(int idEmpl, String apellidos, String email, Date fechaIngreso, Date fechaNacimiento, String genero,

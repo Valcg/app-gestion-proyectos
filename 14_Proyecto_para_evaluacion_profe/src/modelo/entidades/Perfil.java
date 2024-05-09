@@ -84,5 +84,5 @@ public class Perfil implements Serializable {
 		this.nombre = nombre;
 		this.tasaStandard = tasaStandard;
 	}
-
+ 
 }

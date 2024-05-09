@@ -3,7 +3,12 @@ package modelo.entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
+
+
 
 
 /**
@@ -207,11 +212,24 @@ public class Proyecto implements Serializable {
 	
 	
 	public double diferenciaGastos() {
-		return  costesPrevisto.doubleValue() + costeReal.doubleValue() ;}
+		return  costesPrevisto.doubleValue() + costeReal.doubleValue() ;
+		}
 	
 	
 	public int diferenciaFinPrevistoReal() {
 		
+		
+		LocalDate FinReal = fechaFinReal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate FinPrevisto = fechaFinPrevisto.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		
+		long diffInDays= ChronoUnit.DAYS.between(FinReal, FinPrevisto);
+		long diffInMeses= ChronoUnit.MONTHS.between(FinReal, FinPrevisto);
+		long diffInAños= ChronoUnit.YEARS.between(FinReal, FinPrevisto);
+		long diffInSemanas= ChronoUnit.WEEKS.between(FinReal, FinPrevisto);
+		
+	
+		
+		return (int) diffInDays;
 		
 		}
 	/*
