@@ -17,7 +17,9 @@ import principales.GestionClientes;
 public class TestProyectoEntity {
 	
 public static void main(String[] args) throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
+	
+		
 		
 		Cliente cli = new Cliente();
 		cli.setApellidos("lola");
@@ -60,7 +62,9 @@ public static void main(String[] args) throws ParseException {
 		pro.setCliente(cli);
 		pro.setVentaPrevisto(BigDecimal.valueOf(100));
 		
-		pro.setFechaFinReal(sdf.parse("2024-02-25") );
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		pro.setFechaFinReal(sdf.parse( "2024-02-25") );
 		
 		pro.setFechaFinPrevisto(sdf.parse("2024-02-20"));
 	
