@@ -1,5 +1,6 @@
 package modelo.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -59,28 +60,59 @@ public class ProyectoDaoImplMy8Jpa extends abstractDaoImplMy8Jpa implements Proy
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> proyectosByEstado(String estado) {
-		// TODO Auto-generated method stub
-		return null;
+
+		jpql="select p from Proyecto p where p.estado = :estado";
+		
+		query = em.createQuery(jpql);
+		
+		query.setParameter("estado" , estado);
+		
+		
+		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> proyectosByCliente(String cif) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		jpql="select p from Proyecto p where p.Cliente.cif = :cif";
+		
+		query = em.createQuery(jpql);
+		
+		query.setParameter("cif" , cif);
+		
+		
+		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> proyectosByJefeProyectoAndByEstado(int jefeProyecto, String estado) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		jpql="select p from Proyecto p where p.Proyecto.Empleado.idEmpl = :jefeProyecto and p.estado = :estado ";
+		//select * from proyectos where estado like "terminado" and jefe_proyecto = 112;
+		
+		query = em.createQuery(jpql);
+		
+		query.setParameter("jefeProyecto" , jefeProyecto);
+		query.setParameter("estado" , estado);
+		
+		
+		return query.getResultList();
 	}
 
 	@Override
 	public double importesVentaProyectosTerminados() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		jpql="select p from Proyecto p where p.estado like 'terminado' ";
+		
+		query = em.createQuery(jpql);
+		
+		return ((BigDecimal)query.getSingleResult()).doubleValue();
+		
 	}
 
 	@Override

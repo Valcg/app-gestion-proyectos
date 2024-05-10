@@ -217,6 +217,9 @@ public class Proyecto implements Serializable {
 	
 	
 	public int diferenciaFinPrevistoReal() {
+		 // select * e datediff(fechaFinPrevisto,fechaFinReal) from Proyecto p;
+		// aqui podraiusar el jpql y pasarle la select del mysql 
+		// pasar de tipo date a Localdate para poder usar el chronit que recibe solo local date
 		
 		
 		LocalDate FinReal = fechaFinReal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -232,6 +235,5 @@ public class Proyecto implements Serializable {
 		return (int) diffInDays;
 		
 		}
-	/*
-	 • diferenciaFinPrevistoReal(): int . Días entre fin previsto y fin real*/
+	
 }

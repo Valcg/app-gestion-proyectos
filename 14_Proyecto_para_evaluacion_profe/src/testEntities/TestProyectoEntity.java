@@ -1,6 +1,8 @@
 package testEntities;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import modelo.entidades.Cliente;
@@ -14,7 +16,8 @@ import principales.GestionClientes;
 
 public class TestProyectoEntity {
 	
-public static void main(String[] args) {
+public static void main(String[] args) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Cliente cli = new Cliente();
 		cli.setApellidos("lola");
@@ -44,18 +47,22 @@ public static void main(String[] args) {
 		empl.setPerfil(perfil1);
 		empl.setDepartamento(dep1);
 		
-	
+		
+		
+		
 		Proyecto pro = new Proyecto();
 		pro.setDescripcion(null);
 		pro.setFechaInicio(null);
-		pro.setFechaFinReal(new Date(2020-01-15));
-		pro.setFechaFinPrevisto(new Date(2020-02-20));
-		pro.setCosteReal(BigDecimal.valueOf(7000));
-		pro.setCostesPrevisto(BigDecimal.valueOf(3000));
+		pro.setCosteReal(BigDecimal.valueOf(20));
+		pro.setCostesPrevisto(BigDecimal.valueOf(50));
 		pro.setEstado(null);
 		pro.setEmpleado(empl);
 		pro.setCliente(cli);
-		pro.setVentaPrevisto(BigDecimal.valueOf(8000));
+		pro.setVentaPrevisto(BigDecimal.valueOf(100));
+		
+		pro.setFechaFinReal(sdf.parse("2024-02-25") );
+		
+		pro.setFechaFinPrevisto(sdf.parse("2024-02-20"));
 	
 	
 		
