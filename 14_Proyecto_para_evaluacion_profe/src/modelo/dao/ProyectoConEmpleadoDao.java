@@ -4,7 +4,7 @@ import java.util.List;
 
 import modelo.entidades.ProyectoConEmpleado;
 
-public interface ProyectoConEmpleadoDao {
+public interface ProyectoConEmpleadoDao  {
 	
 	List<ProyectoConEmpleado>empleadosByProyecto(String codigoProyecto);
 	int asignarEmpleadosAProyecto(List<ProyectoConEmpleado> empleados);

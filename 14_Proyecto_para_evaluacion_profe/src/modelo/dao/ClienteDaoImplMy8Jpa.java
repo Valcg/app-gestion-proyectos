@@ -12,7 +12,6 @@ implements ClienteDao{
 	public ClienteDaoImplMy8Jpa() {
 		super();
 	}
-	
 
 
 	@Override
@@ -32,7 +31,9 @@ implements ClienteDao{
 	@Override
 	public Cliente eliminar(String clave) {
 		try {
+			//variable
 			Cliente cliente  = buscarUno(clave);
+			
 			if(cliente  != null) {
 				// que arranque la trnasaccio para poder hacer el commit 
 				tx.begin();
@@ -57,15 +58,22 @@ implements ClienteDao{
 		
 	}
 
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> buscarTodos() {
+		
 		jpql = "select c from Cliente c";
 		query = em.createQuery(jpql);
 		return query.getResultList();
+		
+		
 	}
 	
 
 }
 // importe de venta de proyecto es la venta prevista
 //no hay jefe de departamento 
+
+	
+

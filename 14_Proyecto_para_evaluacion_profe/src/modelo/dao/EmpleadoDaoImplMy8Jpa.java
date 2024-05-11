@@ -73,7 +73,7 @@ implements EmpleadoDao{
 	@Override
 	public List<Empleado> empleadosByApellido(String subcadena) {
 		jpql="select e from Empleado e where e.apellidos like :subcadena"; // variable host 
-		
+		//select * from empleados where apellidos = "pepito"
 		query = em.createQuery(jpql);
 		query.setParameter("subcadena" , "%" + subcadena + "%");
 		

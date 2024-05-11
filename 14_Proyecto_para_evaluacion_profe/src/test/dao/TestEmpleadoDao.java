@@ -1,6 +1,8 @@
 package test.dao;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import modelo.dao.DepartamentoDao;
 import modelo.dao.DepartamentoDaoImplMy8Jpa;
@@ -25,9 +27,12 @@ private static DepartamentoDao ddao ;
 		ddao = new DepartamentoDaoImplMy8Jpa();
 }
 	
+
+	 static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException{
+		//alta();
 		//todos();
 		//uno();
 		//eliminar();
@@ -35,11 +40,12 @@ private static DepartamentoDao ddao ;
 		//empleadosBySexo();
 		//empleadosByApellido();
 		//salarioTotal();
-		salarioTotalINT();
-		//alta();
+		//salarioTotalINT();
+		
+		
 }
 	
-	public static void alta() {
+	public static void alta() throws ParseException {
 		
 		Empleado empl = new Empleado();
 		empl.setNombre("petra");
@@ -47,33 +53,52 @@ private static DepartamentoDao ddao ;
 		empl.setGenero("M");
 		empl.setFechaIngreso(null);
 		empl.setFechaNacimiento(null);
-		empl.setEmail("petra@fp.com");
+		empl.setEmail(empl.obtenerEmail());
 		empl.setPassword("petra");
 		empl.setSalario(BigDecimal.valueOf(3000));
 		empl.setPerfil(pdao.buscarUno(4));
 		empl.setDepartamento(ddao.buscarUno(10));
 		empl.setProyectos(null);
+		
+		Empleado empl1 = new Empleado();
+		empl1.setNombre("tomas");
+		empl1.setApellidos("escudero");
+		empl1.setGenero("H");
+		empl1.setFechaIngreso(sdf.parse("2020-06-06"));
+		empl1.setFechaNacimiento(sdf.parse("1990-01-20"));
+		empl1.setEmail(empl1.obtenerEmail());
+		empl1.setPassword("tomas");
+		empl1.setSalario(BigDecimal.valueOf(3000));
+		empl1.setPerfil(pdao.buscarUno(3));
+		empl1.setDepartamento(ddao.buscarUno(20));
+		empl1.setProyectos(null);
+		
+		Empleado empl2 = new Empleado();
+		empl2.setNombre("carolina");
+		empl2.setApellidos("roasa");
+		empl2.setGenero("M");
+		empl2.setFechaIngreso(sdf.parse("2020-08-25"));
+		empl2.setFechaNacimiento(sdf.parse("1995-02-05"));
+		empl2.setEmail(empl2.obtenerEmail());
+		empl2.setPassword("carolina");
+		empl2.setSalario(BigDecimal.valueOf(20000));
+		empl2.setPerfil(pdao.buscarUno(1));
+		empl2.setDepartamento(ddao.buscarUno(40));
+		empl2.setProyectos(null);
 			
 		 
 		System.out.println(edao.alta(empl));
-		//todos();
+		//System.out.println(edao.alta(empl1));
+		//System.out.println(edao.alta(empl2));
+		todos();
 		
 		
 	}
 	
 	public static void eliminar() {
 		
-		Empleado empl = new Empleado();
-		empl.setNombre("petra");
-		empl.setApellidos("pera");
-		empl.setGenero("M");
-		empl.setPassword("root");
-		empl.setSalario(BigDecimal.valueOf(3000));
-		empl.setPerfil(pdao.buscarUno(4));
-		empl.setDepartamento(ddao.buscarUno(10));
-		empl.setProyectos(null);
 		 
-		System.out.println(" eliminando : " + edao.eliminar(120));
+		System.out.println(" eliminando : " + edao.eliminar(121));
 		
 		
 	}

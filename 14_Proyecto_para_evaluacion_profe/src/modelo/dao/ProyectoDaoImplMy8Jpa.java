@@ -78,11 +78,11 @@ public class ProyectoDaoImplMy8Jpa extends abstractDaoImplMy8Jpa implements Proy
 	@Override
 	public List<Proyecto> proyectosByCliente(String cif) {
 		
-		jpql="select p from Proyecto p where p.Cliente.cif = :cif";
+		jpql="select p from Proyecto p where p.cliente.cif = :cif";
 		
 		query = em.createQuery(jpql);
 		
-		query.setParameter("cif" , cif);
+		query.setParameter("cif",cif);
 		
 		
 		return query.getResultList();
@@ -92,12 +92,12 @@ public class ProyectoDaoImplMy8Jpa extends abstractDaoImplMy8Jpa implements Proy
 	@Override
 	public List<Proyecto> proyectosByJefeProyectoAndByEstado(int jefeProyecto, String estado) {
 		
-		jpql="select p from Proyecto p where p.Proyecto.Empleado.idEmpl = :jefeProyecto and p.estado = :estado ";
+		jpql="select p from Proyecto p where p.empleado.idEmpl = :jefeProyecto and p.estado = :estado ";
 		//select * from proyectos where estado like "terminado" and jefe_proyecto = 112;
 		
 		query = em.createQuery(jpql);
 		
-		query.setParameter("jefeProyecto" , jefeProyecto);
+		query.setParameter("jefeProyecto", jefeProyecto);
 		query.setParameter("estado" , estado);
 		
 		
@@ -107,24 +107,41 @@ public class ProyectoDaoImplMy8Jpa extends abstractDaoImplMy8Jpa implements Proy
 	@Override
 	public double importesVentaProyectosTerminados() {
 		
-		jpql="select p from Proyecto p where p.estado like 'terminado' ";
+		jpql="select SUM(p.ventaPrevisto) from Proyecto p where p.estado = 'TERMINADO' ";
 		
 		query = em.createQuery(jpql);
 		
-		return ((BigDecimal)query.getSingleResult()).doubleValue();
+		return ((BigDecimal) query.getSingleResult()).doubleValue();
 		
 	}
 
 	@Override
 	public double margenBrutoProyectosTerminados() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		jpql="select p.costeReal - p.costesPrevisto from Proyecto p where p.estado like 'terminado' ";
+		
+		query = em.createQuery(jpql);
+		
+		return ((BigDecimal)query.getSingleResult()).doubleValue();	
+		}
+	
+	
+	//select (coste_real - costes_previsto)  from proyectos  where estado like 'terminado' ;
+	//Diferencia suma Importes venta"coste real" y gastos reales.
+
 
 	@Override
 	public int diasATerminoProyectoActivo(String codigoProyecto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		jpql="select FUNCTION('DATEDIFF', p.fechaFinPrevisto, CURRENT_DATE()) from Proyecto p where p.estado like 'Activo' and p.idProyecto= :codigoProyecto ";
+		
+		//jpql="select p.datediff(fechaFinPrevisto,CURRENT_DATE()) from Proyecto p where p.estado like 'Activo' and p.idProyecto= :codigoProyecto ";
+		
+		query = em.createQuery(jpql);
+		query.setParameter("codigoProyecto" , codigoProyecto);
+		
+		return (int) query.getSingleResult();	
+
+		//select *, datediff(fecha_fin_previsto,CURDATE()) as diferencia  from proyectos  where estado like 'Activo';
 	}
 
 }

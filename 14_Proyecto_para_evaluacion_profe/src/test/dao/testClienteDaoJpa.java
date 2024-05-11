@@ -22,9 +22,9 @@ public class testClienteDaoJpa {
 	
 	
 	public static void main(String[] args) {
-		todos();
+		//todos();
 		//uno();
-		//alta();
+		alta();
 		//eliminar();
 }
 	
@@ -39,9 +39,34 @@ public class testClienteDaoJpa {
 			cliente.setFacturacionAnual(BigDecimal.valueOf(1500005L));
 			cliente.setNumeroEmpleados(3000);
 			
-		 
-		System.out.println(cdao.alta(cliente));
-		todos();
+			Cliente cliente3 = new Cliente();
+			cliente3.setCif("E66666666");
+			cliente3.setNombre("mario");
+			cliente3.setApellidos("castro");
+			cliente3.setDomicilio("Gran via");
+			cliente3.setFacturacionAnual(BigDecimal.valueOf(400000000L));
+			cliente3.setNumeroEmpleados(1000);
+		
+			Cliente cliente4 = new Cliente();
+			cliente4.setCif("D66666666");
+			cliente4.setApellidos("lupe");
+			cliente4.setDomicilio("torrejon");
+			cliente4.setFacturacionAnual(BigDecimal.valueOf(1500005L));
+			cliente4.setNombre("maria");
+			cliente4.setNumeroEmpleados(700);
+			
+		 Cliente cliente5 = new Cliente("C44444488","dani","pasto","Aranjuez",BigDecimal.valueOf(1500005L),3000); 
+			
+			
+			System.out.println("dando el alta ");
+			
+			/*System.out.println(cdao.alta(cliente));
+			System.out.println(cdao.alta(cliente3));
+			System.out.println(cdao.alta(cliente4));*/
+			System.out.println(cdao.alta(cliente5));
+	
+	
+			todos();
 		
 		
 	}
@@ -49,7 +74,7 @@ public class testClienteDaoJpa {
 	public static void eliminar() {
 		
 		
-		 Cliente cliente = new Cliente("C44444444","daniela","pastrano","Aranjuez",BigDecimal.valueOf(1500005L),3000); 
+	 Cliente cliente = new Cliente("C44444444","daniela","pastrano","Aranjuez",BigDecimal.valueOf(1500005L),3000); 
 		System.out.println(" eliminando : " + cdao.eliminar("C44444444"));
 		
 		
