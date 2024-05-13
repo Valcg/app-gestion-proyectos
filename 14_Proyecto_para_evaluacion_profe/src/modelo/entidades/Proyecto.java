@@ -212,7 +212,7 @@ public class Proyecto implements Serializable {
 	
 	
 	public double diferenciaGastos() {
-		return  costesPrevisto.doubleValue() + costeReal.doubleValue() ;
+		return  costesPrevisto.doubleValue() - costeReal.doubleValue() ;
 		}
 	
 	

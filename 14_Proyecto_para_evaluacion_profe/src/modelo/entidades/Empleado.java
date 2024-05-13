@@ -202,6 +202,8 @@ public class Empleado implements Serializable {
 	}
 
 	
+	
+
 	public double salarioBruto() {
 		return salario.doubleValue();
 		

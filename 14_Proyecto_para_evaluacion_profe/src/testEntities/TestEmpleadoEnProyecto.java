@@ -14,6 +14,8 @@ import modelo.entidades.ProyectoConEmpleado;
 public class TestEmpleadoEnProyecto {
 	public static void main(String[] args) throws ParseException {
 		
+
+		
 		Cliente cli = new Cliente();
 		cli.setApellidos("lola");
 		cli.setCif("4ttttttty");

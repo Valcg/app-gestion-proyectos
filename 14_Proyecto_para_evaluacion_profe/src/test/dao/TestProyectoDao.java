@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+
 import modelo.dao.ClienteDao;
 import modelo.dao.ClienteDaoImplMy8Jpa;
 import modelo.dao.EmpleadoDao;
@@ -13,11 +14,14 @@ import modelo.dao.ProyectoDao;
 import modelo.dao.ProyectoDaoImplMy8Jpa;
 import modelo.entidades.Proyecto;
 
+
 public class TestProyectoDao {
 	
 	private static ProyectoDao prdao ;
 	private static ClienteDao cdao ;
 	private static EmpleadoDao edao ;
+	
+	
 	
 	
 	static {

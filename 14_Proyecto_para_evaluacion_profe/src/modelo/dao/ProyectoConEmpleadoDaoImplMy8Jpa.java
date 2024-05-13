@@ -1,16 +1,24 @@
 package modelo.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
-import modelo.entidades.Proyecto;
 import modelo.entidades.ProyectoConEmpleado;
 
 public class ProyectoConEmpleadoDaoImplMy8Jpa  extends abstractDaoImplMy8Jpa implements ProyectoConEmpleadoDao  {
+	
+	private static ProyectoDao cdao;
+	
+	static {
+		
+		cdao = new ProyectoDaoImplMy8Jpa();
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ProyectoConEmpleado> empleadosByProyecto(String codigoProyecto) {
-		jpql="select c from ProyectoConEmpleado c where c.proyecto.idProyecto = :codigoProyecto";  
+		
+		jpql="select pe.empleado from ProyectoConEmpleado pe where pe.proyecto.idProyecto = :codigoProyecto";  
 		
 		query = em.createQuery(jpql);
 		
@@ -21,37 +29,85 @@ public class ProyectoConEmpleadoDaoImplMy8Jpa  extends abstractDaoImplMy8Jpa imp
 
 	@Override
 	public int asignarEmpleadosAProyecto(List<ProyectoConEmpleado> empleados) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int cuenta = 0;
+		
+		tx.begin();
+		
+		// hacemos el for para que cad avez inserte uno nuevo
+		
+		for (ProyectoConEmpleado proyectoConEmpleado : empleados) {
+			
+			//recuerdaa que el ++ va de 1 en 1 y asi podemos devolver la cuenta de cuantos se han asignado
+			cuenta ++;
+			
+			em.persist(empleados);
+		}
+		
+		tx.commit();
+		return cuenta;
 	}
 
 	@Override
-	public int horasAsignadasAProyecto(String codigoProyecto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int horasAsignadasAProyecto(String codigoProyecto) {  // Suma de las horas de los empleados asignados al proyecto
+		
+		
+		jpql="select SUM(pe.horasAsignadas) from ProyectoConEmpleado pe where pe.proyecto.idProyecto = :codigoProyecto";  
+		
+		query = em.createQuery(jpql);
+		
+		query.setParameter("codigoProyecto" , codigoProyecto );
+		
+		return (int) query.getSingleResult();
 	}
 
 	@Override
 	public double costeActualDeProyecto(String codigoProyecto) { //horas*coste-hora de cada empleado asignado al proyecto.
 		
-		//jpql="select c.(horasAsignadas*empleado.perfil.TasaStandard) from ProyectoConEmpleado c where c.proyecto.idProyecto = :codigoProyecto";  
-		jpql = "SELECT c.horasAsignadas * e.perfil.tasaStandard " +
-			       "FROM ProyectoConEmpleado c " +
-			       "JOIN c.empleado e " +
-			       "WHERE c.proyecto.idProyecto = :codigoProyecto";
+		
+		jpql="select SUM(ep.horasAsignadas * ep.empleado.perfil.tasaStandard) from ProyectoConEmpleado ep where ep.proyecto.idProyecto = :codigoProyecto";
 
 		query = em.createQuery(jpql);
 		
 		query.setParameter("codigoProyecto" , codigoProyecto );
 		
-		return (double) query.getSingleResult();
+		return ((BigDecimal) query.getSingleResult()).doubleValue();
 	}
 
 	@Override
-	public double margenActualProyecto(String codigoProyecto) { // e. Importe_venta del proyecto –costeActual del Proyecto
+	public double margenActualProyecto(String codigoProyecto) { // e. Importe_venta del proyecto = venta prevista – costeActual del Proyecto
 
+		jpql="select ep from ProyectoConEmpleado ep where ep.proyecto.idProyecto = :codigoProyecto";
+
+		query = em.createQuery(jpql);
+		
+		query.setParameter("codigoProyecto" , codigoProyecto );
+		
+		return cdao.buscarUno(codigoProyecto).getVentaPrevisto().doubleValue() - costeActualDeProyecto(codigoProyecto);
+	}
+
+	@Override
+	public boolean alta(ProyectoConEmpleado obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
+	}
+
+	@Override
+	public ProyectoConEmpleado eliminar(Integer clave) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProyectoConEmpleado buscarUno(Integer clave) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProyectoConEmpleado> buscarTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
