@@ -32,7 +32,7 @@ private static DepartamentoDao ddao ;
 	
 	
 	public static void main(String[] args) throws ParseException{
-		//alta();
+		alta();
 		//todos();
 		//uno();
 		//eliminar();
@@ -88,8 +88,8 @@ private static DepartamentoDao ddao ;
 			
 		 
 		System.out.println(edao.alta(empl));
-		//System.out.println(edao.alta(empl1));
-		//System.out.println(edao.alta(empl2));
+		System.out.println(edao.alta(empl1));
+		System.out.println(edao.alta(empl2));
 		todos();
 		
 		

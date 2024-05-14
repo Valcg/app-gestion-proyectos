@@ -1,8 +1,6 @@
 package test.dao;
 
 
-import java.math.BigDecimal;
-import java.util.List;
 
 import modelo.dao.EmpleadoDao;
 import modelo.dao.EmpleadoDaoImplMy8Jpa;
@@ -31,10 +29,18 @@ public class TestProyectoConEmpleadoDao {
 		//asignarEmpleadosAProyecto();
 		margenActualProyecto();
 		
-		Empleado [] empl = {  edao.buscarUno(124),
-							  edao.buscarUno(123)
+		/*Empleado [] empl = {  edao.buscarUno(124),
+							  edao.buscarUno(123)*/
 		
-		};
+		 /*List<ProyectoConEmpleado> empleados = new ArrayList<>();
+	        
+	        Empleado empleado1 = new Empleado(1, "Juan", 2000.0);
+	        Empleado empleado2 = new Empleado(2, "Maria", 2500.0);
+	        
+	        listaEmpleados.add(empleado1);
+	        listaEmpleados.add(empleado2);*/
+		
+		//};
 				
 		
 	}
@@ -58,7 +64,7 @@ public class TestProyectoConEmpleadoDao {
 	
 	public static void asignarEmpleadosAProyecto() {
 		
-		
+		//System.out.println(pedao.asignarEmpleadosAProyecto(empl[1]));
 	}
 	
 	public static void margenActualProyecto() {

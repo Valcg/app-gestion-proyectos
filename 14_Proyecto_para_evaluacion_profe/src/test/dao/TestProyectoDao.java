@@ -67,7 +67,7 @@ public static void main(String[] args) throws ParseException {
 			pr.setEmpleado(edao.buscarUno(119));
 			
 			Proyecto pr1 = new Proyecto();
-			pr1.setIdProyecto("bbbdddd2024004");
+			pr1.setIdProyecto("bd2024004");
 			pr1.setCosteReal(BigDecimal.valueOf(50000));
 			pr1.setCostesPrevisto(BigDecimal.valueOf(40000));
 			pr1.setDescripcion("creacion de base de datos para materiales");

@@ -60,9 +60,9 @@ public class testClienteDaoJpa {
 			
 			System.out.println("dando el alta ");
 			
-			/*System.out.println(cdao.alta(cliente));
+			System.out.println(cdao.alta(cliente));
 			System.out.println(cdao.alta(cliente3));
-			System.out.println(cdao.alta(cliente4));*/
+			System.out.println(cdao.alta(cliente4));
 			System.out.println(cdao.alta(cliente5));
 	
 	

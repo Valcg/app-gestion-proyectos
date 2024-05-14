@@ -21,9 +21,9 @@ public class TestDepartamentoDao {
 		
 		
 	public static void main(String[] args) {
-			//alta();
+			alta();
 			//todos();
-			uno();
+			//uno();
 			//eliminar();
 
 			

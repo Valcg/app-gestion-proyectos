@@ -31,6 +31,8 @@ public class Factura implements Serializable {
 	private Proyecto proyecto;
 
 	public Factura() {
+		
+		super();
 	}
 
 	public String getIdFactura() {
@@ -64,5 +66,44 @@ public class Factura implements Serializable {
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
+
+	@Override
+	public String toString() {
+		return "Factura [idFactura=" + idFactura + ", descripcion=" + descripcion + ", fechaFactura=" + fechaFactura
+				+ ", proyecto=" + proyecto + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idFactura == null) ? 0 : idFactura.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Factura))
+			return false;
+		Factura other = (Factura) obj;
+		if (idFactura == null) {
+			if (other.idFactura != null)
+				return false;
+		} else if (!idFactura.equals(other.idFactura))
+			return false;
+		return true;
+	}
+
+	public Factura(String idFactura, String descripcion, Date fechaFactura, Proyecto proyecto) {
+		super();
+		this.idFactura = idFactura;
+		this.descripcion = descripcion;
+		this.fechaFactura = fechaFactura;
+		this.proyecto = proyecto;
+	}
+	
+	
 
 }
