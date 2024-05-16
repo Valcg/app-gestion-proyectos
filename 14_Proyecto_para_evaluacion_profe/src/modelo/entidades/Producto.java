@@ -87,4 +87,43 @@ public class Producto implements Serializable {
 		this.familia = familia;
 	}
 
+	@Override
+	public String toString() {
+		return "Producto [idProducto=" + idProducto + ", descripcion=" + descripcion + ", fechaCreacion="
+				+ fechaCreacion + ", precio=" + precio + ", stock=" + stock + ", familia=" + familia + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idProducto;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Producto))
+			return false;
+		Producto other = (Producto) obj;
+		if (idProducto != other.idProducto)
+			return false;
+		return true;
+	}
+
+	public Producto(int idProducto, String descripcion, Date fechaCreacion, BigDecimal precio, int stock,
+			Familia familia) {
+		super();
+		this.idProducto = idProducto;
+		this.descripcion = descripcion;
+		this.fechaCreacion = fechaCreacion;
+		this.precio = precio;
+		this.stock = stock;
+		this.familia = familia;
+	}
+	
+	
+
 }

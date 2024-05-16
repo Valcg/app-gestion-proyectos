@@ -30,7 +30,7 @@ public class ProyectoConEmpleadoDaoImplMy8Jpa  extends abstractDaoImplMy8Jpa imp
 	@Override
 	public int asignarEmpleadosAProyecto(List<ProyectoConEmpleado> empleados) {
 		
-		int cuenta = 0;
+		
 		
 		tx.begin();
 		
@@ -39,13 +39,12 @@ public class ProyectoConEmpleadoDaoImplMy8Jpa  extends abstractDaoImplMy8Jpa imp
 		for (ProyectoConEmpleado proyectoConEmpleado : empleados) {
 			
 			//recuerdaa que el ++ va de 1 en 1 y asi podemos devolver la cuenta de cuantos se han asignado
-			cuenta ++;
-			
-			em.persist(empleados);
+			em.persist(proyectoConEmpleado);
 		}
 		
 		tx.commit();
-		return cuenta;
+		// el size es un metodo de size y te los cuenta hasta el ultimo que te inserte 
+		return empleados.size();
 	}
 
 	@Override

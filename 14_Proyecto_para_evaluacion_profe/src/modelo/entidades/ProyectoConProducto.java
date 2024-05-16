@@ -77,4 +77,43 @@ public class ProyectoConProducto implements Serializable {
 		this.proyecto = proyecto;
 	}
 
+	@Override
+	public String toString() {
+		return "ProyectoConProducto [numOrden=" + numOrden + ", cantidad=" + cantidad + ", precioAsignado="
+				+ precioAsignado + ", producto=" + producto + ", proyecto=" + proyecto + "]";
+	}
+	
+	
+
+	public ProyectoConProducto(int numOrden, int cantidad, int precioAsignado, Producto producto, Proyecto proyecto) {
+		super();
+		this.numOrden = numOrden;
+		this.cantidad = cantidad;
+		this.precioAsignado = precioAsignado;
+		this.producto = producto;
+		this.proyecto = proyecto;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + numOrden;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof ProyectoConProducto))
+			return false;
+		ProyectoConProducto other = (ProyectoConProducto) obj;
+		if (numOrden != other.numOrden)
+			return false;
+		return true;
+	}
+	
+	
+
 }
