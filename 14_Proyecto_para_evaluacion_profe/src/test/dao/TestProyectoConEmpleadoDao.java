@@ -39,6 +39,7 @@ public class TestProyectoConEmpleadoDao {
 		//empleadosByProyecto();
 		//asignarEmpleadosAProyecto();
 		//margenActualProyecto();
+		buscarUno();
 		
 		
 	 
@@ -107,8 +108,15 @@ public class TestProyectoConEmpleadoDao {
 	
 	}
 	
-		/*ProyectoConEmpleadoDao pedao = new ProyectoConEmpleadoDaoImplMy8Jpa();
-		System.out.println(pedao.costeActualDeProyecto("FOR2020001"));*/
+	public static void buscarUno() {
+		
+		
+		System.out.println(pedao.buscarUno(2));
+	
+	}
+	
+
+
 
 	}
 

@@ -36,26 +36,26 @@ public class testClienteDaoJpa {
 			cliente.setNombre("daniela");
 			cliente.setApellidos("pastrano");
 			cliente.setDomicilio("Aranjuez");
-			cliente.setFacturacionAnual(BigDecimal.valueOf(1500005L));
-			cliente.setNumeroEmpleados(3000);
+			cliente.setFacturacionAnual(BigDecimal.valueOf(150000L));
+			cliente.setNumeroEmpleados(100);
 			
 			Cliente cliente3 = new Cliente();
 			cliente3.setCif("E66666666");
 			cliente3.setNombre("mario");
 			cliente3.setApellidos("castro");
 			cliente3.setDomicilio("Gran via");
-			cliente3.setFacturacionAnual(BigDecimal.valueOf(400000000L));
-			cliente3.setNumeroEmpleados(1000);
+			cliente3.setFacturacionAnual(BigDecimal.valueOf(400000L));
+			cliente3.setNumeroEmpleados(200);
 		
 			Cliente cliente4 = new Cliente();
-			cliente4.setCif("D66666666");
+			cliente4.setCif("D55555555");
 			cliente4.setApellidos("lupe");
 			cliente4.setDomicilio("torrejon");
-			cliente4.setFacturacionAnual(BigDecimal.valueOf(1500005L));
+			cliente4.setFacturacionAnual(BigDecimal.valueOf(320000L));
 			cliente4.setNombre("maria");
-			cliente4.setNumeroEmpleados(700);
+			cliente4.setNumeroEmpleados(300);
 			
-		 Cliente cliente5 = new Cliente("C44444488","dani","pasto","Aranjuez",BigDecimal.valueOf(1500005L),3000); 
+		 Cliente cliente5 = new Cliente("F66666666","julia","gomez","Odonell",BigDecimal.valueOf(40000L),400); 
 			
 			
 			System.out.println("dando el alta ");

@@ -99,8 +99,8 @@ public class ProyectoConEmpleadoDaoImplMy8Jpa  extends abstractDaoImplMy8Jpa imp
 
 	@Override
 	public ProyectoConEmpleado buscarUno(Integer clave) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(ProyectoConEmpleado.class, clave);
+		
 	}
 
 	@Override
