@@ -2,7 +2,6 @@ package modelo.dao;
 
 import java.util.List;
 
-import modelo.entidades.Cliente;
 import modelo.entidades.Empleado;
 
 public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements EmpleadoDao {
@@ -40,7 +39,7 @@ public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Empl
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}
+		} 
 	}
 
 	@Override
@@ -48,6 +47,7 @@ public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Empl
 		return em.find(Empleado.class, clave);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Empleado> buscarTodos() {
 		jpql = "select e from Empleado e";
@@ -65,28 +65,41 @@ public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Empl
 		return query.getResultList();
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Empleado> empleadosBySexo(char sexo) {
-		// TODO Auto-generated method stub
-		return null;
+		jpql = "select e Empleado e"
+				+ "where e.sexo =:sexo";
+		query = em.createQuery(jpql);
+		query.setParameter("sexo", sexo);
+		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Empleado> empleadosByApellido(String subcadena) {
-		// TODO Auto-generated method stub
-		return null;
+		jpql = "select e Empleado e"
+				+ "where e.apellido =:apellido";
+		query = em.createQuery(jpql);
+		query.setParameter("apellido", subcadena);
+		return query.getResultList();
 	}
-
+	
 	@Override
 	public double salarioTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		jpql = "select sum(e.salario)Empleado e";
+		query = em.createQuery(jpql);
+		return (double) query.getSingleResult();
 	}
 
 	@Override
 	public double salarioTotal(int idDepar) {
-		// TODO Auto-generated method stub
-		return 0;
+		jpql = "select sum(e.salario)Empleado e where e.idDepar = :idDepar";
+				
+		query = em.createQuery(jpql);
+		query.setParameter("idDepar", idDepar);
+		return (double) query.getSingleResult();
 	}
 	
 	
