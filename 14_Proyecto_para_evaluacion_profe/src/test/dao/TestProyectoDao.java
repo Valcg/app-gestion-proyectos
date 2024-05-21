@@ -43,8 +43,8 @@ public static void main(String[] args) throws ParseException {
 		//eliminar();
 		//proyectosByEstado();
 		//proyectosByJefeProyectoAndByEstado();
-		importesVentaProyectosTerminados();
-		//margenBrutoProyectosTerminados();
+		//importesVentaProyectosTerminados();
+		margenBrutoProyectosTerminados();
 		//diasATerminoProyectoActivo();
 
 		

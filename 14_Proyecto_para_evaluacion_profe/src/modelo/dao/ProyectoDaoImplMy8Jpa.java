@@ -117,11 +117,14 @@ public class ProyectoDaoImplMy8Jpa extends abstractDaoImplMy8Jpa implements Proy
 
 	@Override
 	public double margenBrutoProyectosTerminados() {
-		jpql="select p.costeReal - p.costesPrevisto from Proyecto p where p.estado like 'terminado' ";
+		jpql="select AVG(p.costeReal - p.costesPrevisto) from Proyecto p where p.estado like 'terminado' ";
+		// TOMAS AQUI ESTO DEVOLVIA MAS DE UN RESULTADO ASI QUE TUVE QUE SACAR LA MEDIA PARA QUE
+		// ME DEVOLVIERA SOLO UN RESULTADO O SI NO ESTE METODO TENIA QUE DEVOLVER UNA LISTA PARA DARME 
+		// EL MARGEN BRUTO DE CADA PROYECTO TERMINADO
 		
 		query = em.createQuery(jpql);
 		
-		return ((BigDecimal)query.getSingleResult()).doubleValue();	
+		return ((Number) query.getSingleResult()).doubleValue();	
 		}
 	
 	
