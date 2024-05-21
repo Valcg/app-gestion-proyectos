@@ -40,14 +40,14 @@ private static FamiliaDao fadao;
 		 Producto producto1 = new Producto();
 		 producto1.setDescripcion("teclado");
 		 producto1.setFamilia(fadao.buscarUno(2));
-		 producto1.setFechaCreacion(sdf.parse("2023-04-02"));
+		 producto1.setFechaCreacion(sdf.parse("2019-04-02"));
 		 producto1.setPrecio(BigDecimal.valueOf(500));
 		 producto1.setStock(100);
 		 
 		 Producto producto2 = new Producto();
 		 producto2.setDescripcion("sillas ergonómicas");
 		 producto2.setFamilia(fadao.buscarUno(2));
-		 producto2.setFechaCreacion(sdf.parse("2023-04-02"));
+		 producto2.setFechaCreacion(sdf.parse("2019-04-05"));
 		 producto2.setPrecio(BigDecimal.valueOf(1000));
 		 producto2.setStock(50);
 		 

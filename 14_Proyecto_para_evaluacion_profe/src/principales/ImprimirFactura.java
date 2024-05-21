@@ -63,9 +63,11 @@ public class ImprimirFactura {
 		factura.setDescripcion("creacion de base de datos para materiales");
 		factura.setIdFactura("BD1001");
 		factura.setProyecto(pdao.buscarUno("bd2024004"));
-		factura.setFechaFactura(sdf.parse("2024-02-20"));
+		factura.setFechaFactura(sdf.parse("2023-03-16"));
 		
 		System.out.println(fdao.alta(factura));
+		
+
 		
 	}
 	
@@ -123,8 +125,8 @@ public class ImprimirFactura {
 		System.out.println("DETALLE DEL IMPORTE");
 		
 		System.out.println("importe de venta: " + fdao.buscarUno("BD1001").getProyecto().getVentaPrevisto());
-		System.out.println("total facturado : " + fdao.buscarUno("BD1001").getProyecto().margenReal() +
-				fdao.buscarUno("BD1001").getProyecto().getCosteReal());
+		System.out.println("total facturado : " + fdao.buscarUno("BD1001").getProyecto().margenReal());
+		// tomasin no entendi como sacar el total facturado yo creo que es el mismo importe de venta :)
 		
 		
 	}

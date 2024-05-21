@@ -36,14 +36,14 @@ public class TestProyectoDao {
 
 	
 public static void main(String[] args) throws ParseException {
-		alta();
+		//alta();
 		//proyectosByCliente();
 		//todos();
 		//uno();
 		//eliminar();
 		//proyectosByEstado();
 		//proyectosByJefeProyectoAndByEstado();
-		//importesVentaProyectosTerminados();
+		importesVentaProyectosTerminados();
 		//margenBrutoProyectosTerminados();
 		//diasATerminoProyectoActivo();
 
@@ -124,7 +124,7 @@ public static void main(String[] args) throws ParseException {
 			
 			prdao.proyectosByJefeProyectoAndByEstado(114,"Terminado").forEach(System.out::println);
 			
-			prdao.proyectosByJefeProyectoAndByEstado(115,"Terminado").forEach(System.out::println);
+			prdao.proyectosByJefeProyectoAndByEstado(118,"Terminado").forEach(System.out::println);
 		}
 		
 		public static void importesVentaProyectosTerminados() {

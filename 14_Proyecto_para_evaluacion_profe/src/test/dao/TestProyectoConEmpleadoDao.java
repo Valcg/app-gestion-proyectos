@@ -2,6 +2,8 @@ package test.dao;
 
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +35,7 @@ public class TestProyectoConEmpleadoDao {
 	
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		//costeActualDeProyecto();
 		//empleadosByProyecto();
@@ -41,7 +43,7 @@ public class TestProyectoConEmpleadoDao {
 		//margenActualProyecto();
 		buscarUno();
 		
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	 
 		Proyecto proyecto1=  pdao.buscarUno("bd2024004");
 		Empleado empl1 = edao.buscarUno(118);
@@ -54,21 +56,26 @@ public class TestProyectoConEmpleadoDao {
 		ProyectoConEmpleado empleado1 = new ProyectoConEmpleado();
 		empleado1.setEmpleado(empl1);
 		empleado1.setProyecto(proyecto1);
-		empleado1.setFechaIncorporacion(new Date());
+		empleado1.setFechaIncorporacion(sdf.parse("2022-08-16"));
 		empleado1.setHorasAsignadas(125);
+		
+		
 		
 		ProyectoConEmpleado empleado2 = new ProyectoConEmpleado();
 		
 		empleado2.setEmpleado(empl2);
 		empleado2.setProyecto(proyecto1);
-		empleado2.setFechaIncorporacion(new Date());
-		empleado2.setHorasAsignadas(125);
+		empleado2.setFechaIncorporacion(sdf.parse("2022-08-16"));
+		empleado2.setHorasAsignadas(130);
+		
+		
 		
 		ProyectoConEmpleado empleado3 = new ProyectoConEmpleado();
 		empleado3.setEmpleado(empl3);
 		empleado3.setProyecto(proyecto1);
-		empleado3.setFechaIncorporacion(new Date());
-		empleado3.setHorasAsignadas(125);
+		empleado3.setFechaIncorporacion(sdf.parse("2022-08-16"));
+		empleado3.setHorasAsignadas(120);
+		
 	        
 		 empleados.add(empleado1);
 		 empleados.add(empleado2);

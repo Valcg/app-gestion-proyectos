@@ -43,7 +43,6 @@ public static void main(String[] args) {
 		producto1.setPrecioAsignado(10000);
 		producto1.setProducto(pro1);
 		
-		
 		ProyectoConProducto producto2 = new ProyectoConProducto();
 		producto2.setCantidad(80);
 		producto2.setProyecto(proyecto1);
@@ -55,6 +54,7 @@ public static void main(String[] args) {
 		producto3.setProyecto(proyecto1);
 		producto3.setPrecioAsignado(400);
 		producto3.setProducto(pro3);
+		
 	        
 		productos.add(producto1);
 		productos.add(producto2);
