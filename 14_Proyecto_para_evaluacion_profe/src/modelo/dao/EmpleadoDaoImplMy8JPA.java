@@ -24,28 +24,6 @@ public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Empl
 		}
 	}
 
-	@Override
-	public Empleado eliminar(String clave) {
-		try {
-			Empleado empleado1 = buscarUno(clave);
-			if (empleado1 != null) {
-				tx.begin();
-					em.remove(empleado1);
-				tx.commit();
-				return empleado1;
-			}else
-				return null;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} 
-	}
-
-	@Override
-	public Empleado buscarUno(String clave) {
-		return em.find(Empleado.class, clave);
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -62,17 +40,6 @@ public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Empl
 				+ "where e.departamento.idDepar =:dep";
 		query = em.createQuery(jpql);
 		query.setParameter("dep", idDepar);
-		return query.getResultList();
-	}
-
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Empleado> empleadosBySexo(char sexo) {
-		jpql = "select e Empleado e"
-				+ "where e.sexo =:sexo";
-		query = em.createQuery(jpql);
-		query.setParameter("sexo", sexo);
 		return query.getResultList();
 	}
 
@@ -100,6 +67,39 @@ public class EmpleadoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Empl
 		query = em.createQuery(jpql);
 		query.setParameter("idDepar", idDepar);
 		return (double) query.getSingleResult();
+	}
+
+	@Override
+	public Empleado eliminar(Integer clave) {
+		try {
+			Empleado empleado1 = buscarUno(clave);
+			if (empleado1 != null) {
+				tx.begin();
+					em.remove(empleado1);
+				tx.commit();
+				return empleado1;
+			}else
+				return null;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} 
+	}
+
+	@Override
+	public Empleado buscarUno(Integer clave) {
+		return em.find(Empleado.class, clave);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Empleado> empleadosBySexo(char sexo) {
+		jpql = "select e Empleado e"
+				+ "where e.sexo =:sexo";
+		query = em.createQuery(jpql);
+		query.setParameter("sexo", sexo);
+		return query.getResultList();
 	}
 	
 	

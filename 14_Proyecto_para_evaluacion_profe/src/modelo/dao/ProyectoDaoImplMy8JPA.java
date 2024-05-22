@@ -46,7 +46,7 @@ public class ProyectoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Proy
 
 	@Override
 	public Proyecto buscarUno(String clave) {
-		return em.find(Proyecto.class, clave);
+		return em.find(Proyecto.class,clave);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -60,8 +60,7 @@ public class ProyectoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Proy
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> proyectosByEstado(String estado) {
-		jpql = "select p Proyecto p"
-				+ "where p.estado =:estado";
+		jpql = "select p from Proyecto p where p.estado = :estado";
 		query = em.createQuery(jpql);
 		query.setParameter("estado", estado);
 		return query.getResultList();
@@ -70,18 +69,16 @@ public class ProyectoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Proy
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> proyectosByCliente(String cif) {
-		jpql = "select p Proyecto p"
-				+ "where p.cliente =:cliente";
+		jpql = "select p from Proyecto p where p.cliente.cif = :cif";
 		query = em.createQuery(jpql);
-		query.setParameter("cliente", cif);
+		query.setParameter("cif", cif);
 		return query.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> proyectosByJefeProyectoAndByEstado(int jefeProyecto, String estado) {
-		jpql = "select p Proyecto p"
-				+ "where p.empleado.idEmpl =:jefeProyecto and p.estado =:estado";
+		jpql = "select p from Proyecto p where p.empleado.idEmpl = :jefeProyecto and p.estado = :estado";
 		query = em.createQuery(jpql);
 		query.setParameter("jefeProyecto", jefeProyecto);
 		query.setParameter("estado", estado);
@@ -90,21 +87,21 @@ public class ProyectoDaoImplMy8JPA extends AbstractDaoImplMy8Jpa implements Proy
 
 	@Override
 	public double importesVentaProyectosTerminados() {
-		jpql = "select sum(p.ventaPrevisto) from Proyecto where p.estado = 'Terminado'";
+		jpql = "select sum(p.ventaPrevisto) from Proyecto p where p.estado = 'TERMINADO'";
 		query = em.createQuery(jpql);
 		return ((BigDecimal)query.getSingleResult()).doubleValue(); 
 	}
 
 	@Override
 	public double margenBrutoProyectosTerminados() {
-		jpql = "select p.costeReal - p.costesPrevisto from Proyecto where p.estado like 'terminado'";
+		jpql = "select avg(p.costeReal - p.costesPrevisto) from Proyecto p where p.estado = 'TERMINADO'";
 		query = em.createQuery(jpql);
 		return ((BigDecimal)query.getSingleResult()).doubleValue(); 
 	}
 
 	@Override
 	public int diasATerminoProyectoActivo(String codigoProyecto) {
-		jpql = "select FUNCTION('DATEDIFF', p.fechaFinPrevisto, CURRENT_DATE()) from Proyecto p where p.estado like 'Activo' and p.idProyecto= :codigoProyecto";
+		jpql = "select FUNCTION('DATEDIFF', p.fechaFinPrevisto, CURRENT_DATE()) from Proyecto p where p.estado = 'Activo' and p.idProyecto= :codigoProyecto";
 		
 		// mysql = select datediff(current_date(), fecha_fin_previsto) from proyectos where id_proyecto = "FOR2020001";
 		

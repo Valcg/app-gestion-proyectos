@@ -35,13 +35,13 @@ public class TestClienteDao {
 	
 	public static void eliminar() {
 		System.out.println("Eliminar:");
-		Cliente cliente = new Cliente("C44444444","Lucía","González","Calle Getafe, 23",BigDecimal.valueOf(50000), 23);
+		// Cliente cliente = new Cliente("C44444444","Lucía","González","Calle Getafe, 23",BigDecimal.valueOf(50000), 23);
 		System.out.println("Eliminado" + cdao.eliminar("C44444444"));
 	}
 	
 	public static void buscarUno() {
 		System.out.println("Buscar Uno:");
-		System.out.println(cdao.buscarUno("C44444444"));
+		System.out.println(cdao.buscarUno("B33333333"));
 	}
 	
 	public static void buscarTodos() {
