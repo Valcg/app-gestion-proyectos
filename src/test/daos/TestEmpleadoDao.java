@@ -65,9 +65,10 @@ public class TestEmpleadoDao {
 		System.out.println("BUSCAR TODOS");
 		edao.buscarTodos().forEach(System.out::println);	
 	}
-/*	private static void eliminarEmpleado() {
+	private static void eliminarEmpleado() {
 		
 		System.out.println("eliminar" + edao.eliminar(120));
-	}*/
 
+
+}
 }
