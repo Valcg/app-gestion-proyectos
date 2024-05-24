@@ -1,6 +1,8 @@
 package modelo.entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
+
 import javax.persistence.*;
 
 
@@ -23,6 +25,7 @@ public class Departamento implements Serializable {
 	private String nombre;
 
 	public Departamento() {
+		super();
 	}
 
 	public int getIdDepar() {
@@ -48,5 +51,36 @@ public class Departamento implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	@Override
+	public String toString() {
+		return "Departamento [idDepar=" + idDepar + ", direccion=" + direccion + ", nombre=" + nombre + "]";
+	}
+
+	public Departamento(int idDepar, String direccion, String nombre) {
+		super();
+		this.idDepar = idDepar;
+		this.direccion = direccion;
+		this.nombre = nombre;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idDepar);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Departamento))
+			return false;
+		Departamento other = (Departamento) obj;
+		return idDepar == other.idDepar;
+	}
+	
+	// constructor con todo y sin nada (super), toString, hasandcode
+	
+	
 
 }

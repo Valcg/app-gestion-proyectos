@@ -14,9 +14,9 @@ public class TestClienteDao {
 		}
 	
 	public static void main(String[] args) {
-		alta();
-		eliminar();
-		buscarUno();
+		// alta();
+		// eliminar();
+		// buscarUno();
 		buscarTodos();
 	}
 	
