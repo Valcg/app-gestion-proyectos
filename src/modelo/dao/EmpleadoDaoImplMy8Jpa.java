@@ -6,7 +6,9 @@ import modelo.entidades.Empleado;
 
 public  class EmpleadoDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements EmpleadoDao {
 	
-	public EmpleadoDaoImplMy8Jpa() {super();};
+	public EmpleadoDaoImplMy8Jpa() {
+		super();
+		}
 	
 
 	@Override
@@ -28,8 +30,8 @@ public  class EmpleadoDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements Em
 		try {
 			Empleado emp = buscarUno(clave); // aqui e llega el campo clave
 				if (emp != null) {
-					tx.begin(); // que te va a llegar un insert o varios- INSERTARO MODIFICAR--- EMPIEZA - para hacer el commit
-						em.merge(emp);
+					tx.begin();  // que ARRANQUE PRA PODER HACER EL COMIT
+						em.remove(emp); // ELIMINAMOS
 					tx.commit();
 					return emp;
 					//TRUE
@@ -45,7 +47,7 @@ public  class EmpleadoDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements Em
 
 	@Override
 	public Empleado buscarUno(Integer clave) {
-		// TODO Auto-generated method stub
+		// EM tiene un find, de encontrar , PASAMOS LA CLASE QUE QUEREMOS QUE BUSCE, Y LA CLAVE DEL DEPAR
 		return em.find(Empleado.class, clave);
 	}
 

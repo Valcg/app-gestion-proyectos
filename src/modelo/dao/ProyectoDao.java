@@ -1,10 +1,9 @@
 package modelo.dao;
 
 import java.util.List;
-
 import modelo.entidades.Proyecto;
 
-public interface ProyectoDao  extends  IntGenericoCrud <String,Proyecto> {
+public interface ProyectoDao  extends  IntGenericoCrud <String,Proyecto> { //ID proyecto es String
 
 	
 

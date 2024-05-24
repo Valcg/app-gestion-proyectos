@@ -58,28 +58,12 @@ public class Empleado implements Serializable {
 	@OneToMany(mappedBy="empleado")
 	private List<Proyecto> proyectos;
 
-	public Empleado(int idEmpl, String apellidos, String email, Date fechaIngreso, Date fechaNacimiento, String genero,
-			String nombre, String password, BigDecimal salario, Departamento departamento, Perfil perfil,
-			List<Proyecto> proyectos) {
+
+	
+	public Empleado() {
 		super();
-		this.idEmpl = idEmpl;
-		this.apellidos = apellidos;
-		this.email = email;
-		this.fechaIngreso = fechaIngreso;
-		this.fechaNacimiento = fechaNacimiento;
-		this.genero = genero;
-		this.nombre = nombre;
-		this.password = password;
-		this.salario = salario;
-		this.departamento = departamento;
-		this.perfil = perfil;
-		this.proyectos = proyectos;
 	}
 	
-	public Empleado(String string, String string2, Object object, Object object2, String string3, String string4, String string5, int i, String string6) {
-		super();
-	}
-
 	public int getIdEmpl() {
 		return this.idEmpl;
 	}
@@ -199,13 +183,11 @@ public class Empleado implements Serializable {
 				// to string borrado- bucle
 	}
 	
-	
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idEmpl);
 	}
-
 
 
 	@Override
@@ -218,6 +200,25 @@ public class Empleado implements Serializable {
 		return idEmpl == other.idEmpl;
 	}
 
+	
+	public Empleado(int idEmpl, String apellidos, String email, Date fechaIngreso, Date fechaNacimiento, String genero,
+			String nombre, String password, BigDecimal salario, Departamento departamento, Perfil perfil,
+			List<Proyecto> proyectos) {
+		super();
+		this.idEmpl = idEmpl;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaNacimiento = fechaNacimiento;
+		this.genero = genero;
+		this.nombre = nombre;
+		this.password = password;
+		this.salario = salario;
+		this.departamento = departamento;
+		this.perfil = perfil;
+		this.proyectos = proyectos;
+	}
+
 	//-------------------------------------------------------------
 	
 	public double salarioBruto(){
@@ -225,11 +226,8 @@ public class Empleado implements Serializable {
 	}
 	
 	public double salarioMensual(int meses) {
-		
 		 return salarioBruto() / meses;
 	}
-
-
 	 
 	public String literalGenero() {
 		
@@ -253,21 +251,17 @@ public class Empleado implements Serializable {
 		}	
 	return literal;
 }
-
 	public static String  obtenerEmail(String nombre, String apellidos) { 
 		// 1 LETRA DEL NOMBRE  -- .substring(0,1) PARA EL PRIMER NUMERO DE CARACTER		
-		return  nombre.substring(0,1).toLowerCase() + apellidos.split(" ")[0].toLowerCase()+ "@gmail.com";
+		return  nombre.substring(0,1).toLowerCase() + apellidos.split(" ")[0].toLowerCase()+ "@hotmail.com";
 		
 		// STRING- METODO split separa LAS PALABRAS, y luego me pones un hueco, posicion [0] ----------- .split(" ")[0]----------------!
 		//.toLowerCase(); -------------------------------------------- PONER EN MINUSCULA
 	}
-	
 	
 	public static String nombreCompleto (String nombre, String apellidos) {
 		return nombre + " " +  apellidos;
 	}
 	
 	
-	
-
 }

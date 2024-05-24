@@ -1,17 +1,16 @@
 package modelo.dao;
 
 import java.util.List;
-import modelo.entidades.Perfil;
+import modelo.entidades.Factura;
 
+public class FacturaDaoImplMy8Jpa extends AbstractDaoImplMy8Jpa implements FacturaDao{
 
-public class PerfilDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements PerfilDao {
-
-	public PerfilDaoImplMy8Jpa() {
+	public FacturaDaoImplMy8Jpa() {
 		super();
 		}
 	
 	@Override
-	public boolean alta(Perfil obj) {
+	public boolean alta(Factura obj) {
 		try {
 			tx.begin();		//ABRIMOS CONEXION
 			em.persist(obj); // INSERTAMOS- persistir significa que añades un obt de manera permanente un OBJETO
@@ -22,38 +21,37 @@ public class PerfilDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements Perfi
 			e.printStackTrace(); // SI NO FALSE,------- SI SE CAPTURA EL ERROR
 			return false;
 			}
-		}	
-	
+	}
 
 	@Override
-	public Perfil eliminar(Integer clave) {
+	public Factura eliminar(String clave) {
 		try {
-			Perfil per = buscarUno(clave); // aqui e llega el campo clave
-			if (per != null) {
-				tx.begin(); // que ARRANQUE PRA PODER HACER EL COMIT
-					em.remove(per);// ELIMINAMOS
-				tx.commit();
-				return per;
-				//TRUE
-			}	else
+			Factura dep = buscarUno(clave); // aqui e llega el campo clave
+				if (dep != null) {
+					tx.begin(); // que ARRANQUE PRA PODER HACER EL COMIT
+						em.remove(dep);// ELIMINAMOS
+					tx.commit();
+					return dep;
+					//TRUE
+				}	else
+					return null;
+			}
+			catch(Exception e) {
+				//TODoo : handle exception
+				e.printStackTrace(); // SI NO FALSE
 				return null;
-		}
-		catch(Exception e) {
-			//TODoo : handle exception
-			e.printStackTrace(); // SI NO FALSE
-			return null;
-		}
+			}
 	}
 
 	@Override
-	public Perfil buscarUno(Integer clave) {
+	public Factura buscarUno(String clave) {
 		// EM tiene un find, de encontrar , PASAMOS LA CLASE QUE QUEREMOS QUE BUSCE, Y LA CLAVE DEL DEPAR
-				return em.find(Perfil.class, clave);
+		return em.find(Factura.class, clave);
 	}
-	@SuppressWarnings("unchecked")
+
 	@Override
-	public List<Perfil> buscarTodos() {
-		 jpql ="select p from Perfil p";// p ALIAS que le damos
+	public List<Factura> buscarTodos() {
+		jpql ="select f from Factura f ";// d ALIAS que le damos 
 		 query = em.createQuery(jpql);// ES QUERY, cconsulta PERSONALIZADA, em, tiene metodo CREAR QUERY Y LE PASAMOS EL jpql la consulta personalizada
 		 return query.getResultList(); // DEVUELVE UNA LIST
 	}

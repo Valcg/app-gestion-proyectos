@@ -8,8 +8,7 @@ import modelo.entidades.Cliente;
 
 
 public class TestClienteDao {
-	
-	
+
 	private static ClienteDao dao; // HACEMOS EL OBJ , que se llama dao - TRABAJAMOS CON ESTO
 
 	static{
@@ -20,37 +19,41 @@ public class TestClienteDao {
 	public static void main(String[] args) {	
 		uno();
 		todos();
-		alta();
-		//eliminar();
+	//	alta();
+	//	eliminar();
 	}
 	
 	private static void eliminar() {
-		Cliente cli = new Cliente("A222222","Borja","Borjita","Bilbao",BigDecimal.valueOf(220000),20000);
-		System.out.println("eliminar" + dao.eliminar("A222222"));	
+		System.out.println("------------------ELIMINAR");
+		//Cliente cli = new Cliente("C55555555","Borja","Borjita","Bilbao",BigDecimal.valueOf(1000000),555);
+		System.out.println("eliminar" + dao.eliminar("C55555555"));	
+		System.out.println("eliminar" + dao.eliminar("C77777777"));	
 	}
 
-	private static void alta() {	
+	private static void alta() {
+		System.out.println("------------------ALTA");
 		Cliente  cli = new Cliente();
 		
-		cli.setCif("A1111111");
+		cli.setCif("C1111111");
 		cli.setNombre("Ariana");
 		cli.setApellidos("arianita");
 		cli.setDomicilio("Alcampo");
-		cli.setFacturacionAnual(BigDecimal.valueOf(110000L)); // PARA NUM CON BIG DECIMAL
+		cli.setFacturacionAnual(BigDecimal.valueOf(110000L)); // PARA NUM CON BIG DECIMAL,
+		//TENEMOS QUE CONVERTIRLO, ES UNA CLASE, QUE LO CONVIERTE, PODEMOS PONER UN NUMERO NORMAL Y EL LO CONVIERTE
 		// LA L LO USAMOS EN NUMEROS LARGOS PARA AVISAR -- LONG
 		cli.setNumeroEmpleados(100);	
+				
 		System.out.println(dao.alta(cli));
 		todos();// LLAMAMOS A BUSCARTODOS		
 	}
 
-
 	private static void todos() {
+		System.out.println("------------------BUSCAR TODOS");
 		dao.buscarTodos().forEach(System.out::println);	
 	}
 	private static void uno() { // CLAVE -ES DNI O CIF
-		System.out.println(dao.buscarUno("A1111111"));			
+		System.out.println("------------------BUSCAR UNO");
+		System.out.println(dao.buscarUno("C44444444"));			
 	}
-
-	
 	
 }

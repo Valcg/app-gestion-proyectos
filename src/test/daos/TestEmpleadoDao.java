@@ -34,26 +34,34 @@ public class TestEmpleadoDao {
 
 	public static void main(String[] args) throws ParseException { // USAMOS TAMBIEN thorws parse- para que funcionen
 		
-		//eliminarEmpleado();
+		eliminarEmpleado();
 		mostrarTodos();		
+		buscarUno();
 		
 		alta();	
 	}
-	private static void alta() throws ParseException {
 
+	private static void buscarUno() {
+		System.out.println("------------------BUSCAR UNO");
+		System.out.println(edao.buscarUno(117));	
+		
+	}
+
+	private static void alta() throws ParseException {
+		System.out.println("---------------------------------ALTA");
 		Empleado  emp = new Empleado();
 
-		emp.setIdEmpl(200);
+		//emp.setIdEmpl(200);
 		emp.setNombre("Emilio");
 		emp.setApellidos("Elpozo");
 		emp.setGenero("H");
 		emp.setEmail("emilio@gmail.com");
-		emp.setPassword("emi");
+		emp.setPassword("emilio");
 		emp.setSalario(BigDecimal.valueOf(50000)); // PARA NUM CON BIG DECIMAL
 		emp.setFechaIngreso(sdf.parse("1990-02-22"));
 		emp.setFechaNacimiento(sdf.parse("1990-02-22"));
 		emp.setPerfil(pdao.buscarUno(1)); // BUSCAR UNO 
-		emp.setDepartamento(dedao.buscarUno("10")); // BUSCAR UNO
+		emp.setDepartamento(dedao.buscarUno(20)); // BUSCAR UNO
 		emp.setProyectos(null);		
 		
 		System.out.println(edao.alta(emp));
@@ -62,11 +70,11 @@ public class TestEmpleadoDao {
 		// pce.setEmpleado(edao.buscarUno(118));	 
 	}
 	private static void mostrarTodos() { // TODOSS
-		System.out.println("BUSCAR TODOS");
+		System.out.println("---------------------------------BUSCAR TODOS");
 		edao.buscarTodos().forEach(System.out::println);	
 	}
 	private static void eliminarEmpleado() {
-		
+		System.out.println("---------------------------------ELIMINAR");
 		System.out.println("eliminar" + edao.eliminar(120));
 
 

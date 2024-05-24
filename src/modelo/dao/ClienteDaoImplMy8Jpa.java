@@ -4,15 +4,13 @@ import java.util.List;
 
 import modelo.entidades.Cliente;
 
-
-
 public class ClienteDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements ClienteDao{
 
 	public ClienteDaoImplMy8Jpa(){
 		super();
 	}
 	@Override
-	public boolean alta(Cliente obj) {
+	public boolean alta(Cliente obj) { 
 		
 		try {
 			tx.begin();
@@ -28,12 +26,13 @@ public class ClienteDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements Clie
 	@Override
 	public Cliente eliminar(String clave) {
 		try {
-			Cliente cliente = buscarUno(clave); // aqui e llega el campo clave
+					//VARIABLE de tipo Cliente que es = a un MEtodo y 
+			Cliente cliente = buscarUno(clave); // aqui e llega el campo clave, ES UAN VALIABLE CLIENTE 
 				if (cliente != null) {
 					tx.begin(); // que te va a llegar un insert o varios- INSERTARO MODIFICAR--- EMPIEZA - para hacer el commit
-						em.merge(cliente);
+						em.remove(cliente); // es un entity manager
 					tx.commit();
-					return cliente;
+					return cliente; // nos devuelve todo
 					//TRUE
 				}	else
 					return null;
@@ -44,7 +43,6 @@ public class ClienteDaoImplMy8Jpa  extends AbstractDaoImplMy8Jpa implements Clie
 				return null;
 		}
 	}
-
 	@Override
 	public Cliente buscarUno(String clave) {
 		return em.find(Cliente.class, clave);

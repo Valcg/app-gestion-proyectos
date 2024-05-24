@@ -2,6 +2,9 @@ package modelo.dao;
 
 import modelo.entidades.Departamento;
 
-public interface DepartamentoDao extends IntGenericoCrud <String,Departamento> {
-
+public interface DepartamentoDao extends IntGenericoCrud <Integer,Departamento> {
+	
+	
+	
+	//ID DEPAR, de Departamento
 }

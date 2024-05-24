@@ -24,17 +24,16 @@ public class Departamento implements Serializable {
 
 	private String nombre;
 	
-	
-
-
+// CONSTRUCTORES CON TOD00
 	public Departamento(int idDepar, String direccion, String nombre) {
 		super();
 		this.idDepar = idDepar;
 		this.direccion = direccion;
 		this.nombre = nombre;
 	}
-
+//CONSTRUCTOR CON NADA
 	public Departamento() {
+		super();
 	}
 
 	public int getIdDepar() {
@@ -68,10 +67,7 @@ public class Departamento implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idDepar);
-		
-		
-		//final int prime =31;
+		return Objects.hash(idDepar);	
 	}
 
 	@Override

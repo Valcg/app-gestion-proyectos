@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -75,6 +76,7 @@ public class Proyecto implements Serializable {
 	}
 
 	public Proyecto() {
+	super();
 	}
 
 	public String getIdProyecto() {
@@ -172,10 +174,20 @@ public class Proyecto implements Serializable {
 				+ ", fechaFinReal=" + fechaFinReal + ", fechaInicio=" + fechaInicio + ", ventaPrevisto=" + ventaPrevisto
 				+ ", cliente=" + cliente + ", empleado=" + empleado + "]";
 	}
-	
-	
-	
-	
-	
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(idProyecto);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Proyecto))
+			return false;
+		Proyecto other = (Proyecto) obj;
+		return Objects.equals(idProyecto, other.idProyecto);
+	}
+	
 }

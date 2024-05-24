@@ -18,7 +18,7 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String cif;
+	private String cif; // id de la CLASE
 
 	private String apellidos;
 
@@ -31,7 +31,6 @@ public class Cliente implements Serializable {
 
 	@Column(name="numero_empleados")
 	private int numeroEmpleados;
-	
 	
 	
 	public Cliente(String cif, String nombre, String apellidos, String domicilio, BigDecimal facturacionAnual,
@@ -48,9 +47,6 @@ public class Cliente implements Serializable {
 		super();
 	}
 
-
-	
-	
 	public String getCif() {
 		return this.cif;
 	}
@@ -99,16 +95,17 @@ public class Cliente implements Serializable {
 		this.numeroEmpleados = numeroEmpleados;
 	}
 	
-	
 
-
+	@Override
+	public String toString() {
+		return "Cliente [cif=" + cif + ", apellidos=" + apellidos + ", domicilio=" + domicilio + ", facturacionAnual="
+				+ facturacionAnual + ", nombre=" + nombre + ", numeroEmpleados=" + numeroEmpleados + "]";
+	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(cif);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -119,16 +116,6 @@ public class Cliente implements Serializable {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(cif, other.cif);
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "Cliente [cif=" + cif + ", apellidos=" + apellidos + ", domicilio=" + domicilio + ", facturacionAnual="
-				+ facturacionAnual + ", nombre=" + nombre + ", numeroEmpleados=" + numeroEmpleados + "]";
-	}
-
 	
-		
 	
 }
